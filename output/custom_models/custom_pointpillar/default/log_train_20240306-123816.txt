@@ -1,0 +1,301 @@
+2024-03-06 12:38:16,662   INFO  **********************Start logging**********************
+2024-03-06 12:38:16,664   INFO  CUDA_VISIBLE_DEVICES=0
+2024-03-06 12:38:16,664   INFO  cfg_file         cfgs/custom_models/custom_pointpillar.yaml
+2024-03-06 12:38:16,664   INFO  batch_size       2
+2024-03-06 12:38:16,664   INFO  epochs           100
+2024-03-06 12:38:16,665   INFO  workers          8
+2024-03-06 12:38:16,665   INFO  extra_tag        default
+2024-03-06 12:38:16,665   INFO  ckpt             None
+2024-03-06 12:38:16,666   INFO  pretrained_model None
+2024-03-06 12:38:16,667   INFO  launcher         none
+2024-03-06 12:38:16,667   INFO  tcp_port         18888
+2024-03-06 12:38:16,668   INFO  sync_bn          False
+2024-03-06 12:38:16,668   INFO  fix_random_seed  False
+2024-03-06 12:38:16,669   INFO  ckpt_save_interval 1
+2024-03-06 12:38:16,670   INFO  local_rank       0
+2024-03-06 12:38:16,671   INFO  max_ckpt_save_num 30
+2024-03-06 12:38:16,671   INFO  merge_all_iters_to_one_epoch False
+2024-03-06 12:38:16,672   INFO  set_cfgs         None
+2024-03-06 12:38:16,673   INFO  max_waiting_mins 0
+2024-03-06 12:38:16,673   INFO  start_epoch      0
+2024-03-06 12:38:16,673   INFO  save_to_file     False
+2024-03-06 12:38:16,673   INFO  cfg.ROOT_DIR: /root/yuhaiyang/workspace/OpenPCDet-Noted
+2024-03-06 12:38:16,674   INFO  cfg.LOCAL_RANK: 0
+2024-03-06 12:38:16,674   INFO  cfg.CLASS_NAMES: ['car', 'truck', 'pedestrians', 'non_motor_vehicles']
+2024-03-06 12:38:16,674   INFO  
+cfg.DATA_CONFIG = edict()
+2024-03-06 12:38:16,674   INFO  cfg.DATA_CONFIG.DATASET: CustomDataset
+2024-03-06 12:38:16,675   INFO  cfg.DATA_CONFIG.DATA_PATH: ../data/data2024_2_15
+2024-03-06 12:38:16,675   INFO  cfg.DATA_CONFIG.POINT_CLOUD_RANGE: [-34.56, -39.68, -0.5, 34.56, 39.68, 3.5]
+2024-03-06 12:38:16,675   INFO  
+cfg.DATA_CONFIG.MAP_CLASS_TO_KITTI = edict()
+2024-03-06 12:38:16,675   INFO  cfg.DATA_CONFIG.MAP_CLASS_TO_KITTI.car: Car
+2024-03-06 12:38:16,675   INFO  cfg.DATA_CONFIG.MAP_CLASS_TO_KITTI.truck: Truck
+2024-03-06 12:38:16,676   INFO  cfg.DATA_CONFIG.MAP_CLASS_TO_KITTI.pedestrians: Pedestrian
+2024-03-06 12:38:16,676   INFO  cfg.DATA_CONFIG.MAP_CLASS_TO_KITTI.non_motor_vehicles: Cyclist
+2024-03-06 12:38:16,676   INFO  
+cfg.DATA_CONFIG.DATA_SPLIT = edict()
+2024-03-06 12:38:16,676   INFO  cfg.DATA_CONFIG.DATA_SPLIT.train: train
+2024-03-06 12:38:16,676   INFO  cfg.DATA_CONFIG.DATA_SPLIT.test: val
+2024-03-06 12:38:16,677   INFO  
+cfg.DATA_CONFIG.INFO_PATH = edict()
+2024-03-06 12:38:16,677   INFO  cfg.DATA_CONFIG.INFO_PATH.train: ['custom_infos_train.pkl']
+2024-03-06 12:38:16,677   INFO  cfg.DATA_CONFIG.INFO_PATH.test: ['custom_infos_val.pkl']
+2024-03-06 12:38:16,677   INFO  
+cfg.DATA_CONFIG.POINT_FEATURE_ENCODING = edict()
+2024-03-06 12:38:16,677   INFO  cfg.DATA_CONFIG.POINT_FEATURE_ENCODING.encoding_type: absolute_coordinates_encoding
+2024-03-06 12:38:16,678   INFO  cfg.DATA_CONFIG.POINT_FEATURE_ENCODING.used_feature_list: ['x', 'y', 'z', 'intensity']
+2024-03-06 12:38:16,678   INFO  cfg.DATA_CONFIG.POINT_FEATURE_ENCODING.src_feature_list: ['x', 'y', 'z', 'intensity']
+2024-03-06 12:38:16,678   INFO  
+cfg.DATA_CONFIG.DATA_AUGMENTOR = edict()
+2024-03-06 12:38:16,678   INFO  cfg.DATA_CONFIG.DATA_AUGMENTOR.DISABLE_AUG_LIST: ['placeholder']
+2024-03-06 12:38:16,679   INFO  cfg.DATA_CONFIG.DATA_AUGMENTOR.AUG_CONFIG_LIST: [{'NAME': 'gt_sampling', 'USE_ROAD_PLANE': False, 'DB_INFO_PATH': ['custom_dbinfos_train.pkl'], 'PREPARE': {'filter_by_min_points': ['car:25', 'truck:40', 'pedestrians:10', 'non_motor_vehicles:15']}, 'SAMPLE_GROUPS': ['non_motor_vehicles:3', 'car:3', 'truck:3', 'pedestrain:1'], 'NUM_POINT_FEATURES': 4, 'DATABASE_WITH_FAKELIDAR': False, 'REMOVE_EXTRA_WIDTH': [0.0, 0.0, 0.0], 'LIMIT_WHOLE_SCENE': False}, {'NAME': 'random_world_flip', 'ALONG_AXIS_LIST': ['x']}, {'NAME': 'random_world_rotation', 'WORLD_ROT_ANGLE': [-0.78539816, 0.78539816]}, {'NAME': 'random_world_scaling', 'WORLD_SCALE_RANGE': [0.95, 1.05]}]
+2024-03-06 12:38:16,679   INFO  cfg.DATA_CONFIG.DATA_PROCESSOR: [{'NAME': 'mask_points_and_boxes_outside_range', 'REMOVE_OUTSIDE_BOXES': True}, {'NAME': 'shuffle_points', 'SHUFFLE_ENABLED': {'train': True, 'test': False}}, {'NAME': 'transform_points_to_voxels', 'VOXEL_SIZE': [0.16, 0.16, 4], 'MAX_POINTS_PER_VOXEL': 32, 'MAX_NUMBER_OF_VOXELS': {'train': 16000, 'test': 40000}}]
+2024-03-06 12:38:16,679   INFO  cfg.DATA_CONFIG._BASE_CONFIG_: cfgs/dataset_configs/custom_foton_dataset.yaml
+2024-03-06 12:38:16,679   INFO  
+cfg.MODEL = edict()
+2024-03-06 12:38:16,680   INFO  cfg.MODEL.NAME: PointPillar
+2024-03-06 12:38:16,680   INFO  
+cfg.MODEL.VFE = edict()
+2024-03-06 12:38:16,680   INFO  cfg.MODEL.VFE.NAME: PillarVFE
+2024-03-06 12:38:16,680   INFO  cfg.MODEL.VFE.WITH_DISTANCE: False
+2024-03-06 12:38:16,681   INFO  cfg.MODEL.VFE.USE_ABSLOTE_XYZ: True
+2024-03-06 12:38:16,681   INFO  cfg.MODEL.VFE.USE_NORM: True
+2024-03-06 12:38:16,681   INFO  cfg.MODEL.VFE.NUM_FILTERS: [64]
+2024-03-06 12:38:16,681   INFO  
+cfg.MODEL.MAP_TO_BEV = edict()
+2024-03-06 12:38:16,681   INFO  cfg.MODEL.MAP_TO_BEV.NAME: PointPillarScatter
+2024-03-06 12:38:16,682   INFO  cfg.MODEL.MAP_TO_BEV.NUM_BEV_FEATURES: 64
+2024-03-06 12:38:16,682   INFO  
+cfg.MODEL.BACKBONE_2D = edict()
+2024-03-06 12:38:16,682   INFO  cfg.MODEL.BACKBONE_2D.NAME: BaseBEVBackbone
+2024-03-06 12:38:16,682   INFO  cfg.MODEL.BACKBONE_2D.LAYER_NUMS: [3, 5, 5]
+2024-03-06 12:38:16,682   INFO  cfg.MODEL.BACKBONE_2D.LAYER_STRIDES: [2, 2, 2]
+2024-03-06 12:38:16,683   INFO  cfg.MODEL.BACKBONE_2D.NUM_FILTERS: [64, 128, 256]
+2024-03-06 12:38:16,683   INFO  cfg.MODEL.BACKBONE_2D.UPSAMPLE_STRIDES: [1, 2, 4]
+2024-03-06 12:38:16,683   INFO  cfg.MODEL.BACKBONE_2D.NUM_UPSAMPLE_FILTERS: [128, 128, 128]
+2024-03-06 12:38:16,683   INFO  
+cfg.MODEL.DENSE_HEAD = edict()
+2024-03-06 12:38:16,684   INFO  cfg.MODEL.DENSE_HEAD.NAME: AnchorHeadSingle
+2024-03-06 12:38:16,684   INFO  cfg.MODEL.DENSE_HEAD.CLASS_AGNOSTIC: False
+2024-03-06 12:38:16,684   INFO  cfg.MODEL.DENSE_HEAD.USE_DIRECTION_CLASSIFIER: True
+2024-03-06 12:38:16,684   INFO  cfg.MODEL.DENSE_HEAD.DIR_OFFSET: 0.78539
+2024-03-06 12:38:16,684   INFO  cfg.MODEL.DENSE_HEAD.DIR_LIMIT_OFFSET: 0.0
+2024-03-06 12:38:16,685   INFO  cfg.MODEL.DENSE_HEAD.NUM_DIR_BINS: 2
+2024-03-06 12:38:16,685   INFO  cfg.MODEL.DENSE_HEAD.ANCHOR_GENERATOR_CONFIG: [{'class_name': 'non_motor_vehicles', 'anchor_sizes': [[1.76, 0.6, 1.73]], 'anchor_rotations': [0, 1.57], 'anchor_bottom_heights': [-0.2], 'align_center': False, 'feature_map_stride': 2, 'matched_threshold': 0.5, 'unmatched_threshold': 0.35}, {'class_name': 'car', 'anchor_sizes': [[3.9, 1.9, 1.6]], 'anchor_rotations': [0, 1.57], 'anchor_bottom_heights': [-0.2], 'align_center': False, 'feature_map_stride': 2, 'matched_threshold': 0.6, 'unmatched_threshold': 0.45}, {'class_name': 'truck', 'anchor_sizes': [[6.93, 2.85, 3.19]], 'anchor_rotations': [0, 1.57], 'anchor_bottom_heights': [-0.2], 'align_center': False, 'feature_map_stride': 2, 'matched_threshold': 0.5, 'unmatched_threshold': 0.35}, {'class_name': 'pedestrians', 'anchor_sizes': [[0.6, 0.6, 1.63]], 'anchor_rotations': [0, 1.57], 'anchor_bottom_heights': [-0.2], 'align_center': False, 'feature_map_stride': 2, 'matched_threshold': 0.5, 'unmatched_threshold': 0.35}]
+2024-03-06 12:38:16,685   INFO  
+cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG = edict()
+2024-03-06 12:38:16,685   INFO  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.NAME: AxisAlignedTargetAssigner
+2024-03-06 12:38:16,685   INFO  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.POS_FRACTION: -1.0
+2024-03-06 12:38:16,686   INFO  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.SAMPLE_SIZE: 512
+2024-03-06 12:38:16,686   INFO  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.NORM_BY_NUM_EXAMPLES: False
+2024-03-06 12:38:16,686   INFO  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.MATCH_HEIGHT: False
+2024-03-06 12:38:16,686   INFO  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.BOX_CODER: ResidualCoder
+2024-03-06 12:38:16,686   INFO  
+cfg.MODEL.DENSE_HEAD.LOSS_CONFIG = edict()
+2024-03-06 12:38:16,687   INFO  
+cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS = edict()
+2024-03-06 12:38:16,687   INFO  cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.cls_weight: 1.0
+2024-03-06 12:38:16,687   INFO  cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.loc_weight: 2.0
+2024-03-06 12:38:16,687   INFO  cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.dir_weight: 0.2
+2024-03-06 12:38:16,687   INFO  cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.code_weights: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+2024-03-06 12:38:16,688   INFO  
+cfg.MODEL.POST_PROCESSING = edict()
+2024-03-06 12:38:16,688   INFO  cfg.MODEL.POST_PROCESSING.RECALL_THRESH_LIST: [0.3, 0.5, 0.7]
+2024-03-06 12:38:16,688   INFO  cfg.MODEL.POST_PROCESSING.SCORE_THRESH: 0.1
+2024-03-06 12:38:16,688   INFO  cfg.MODEL.POST_PROCESSING.OUTPUT_RAW_SCORE: False
+2024-03-06 12:38:16,689   INFO  cfg.MODEL.POST_PROCESSING.EVAL_METRIC: kitti
+2024-03-06 12:38:16,689   INFO  
+cfg.MODEL.POST_PROCESSING.NMS_CONFIG = edict()
+2024-03-06 12:38:16,689   INFO  cfg.MODEL.POST_PROCESSING.NMS_CONFIG.MULTI_CLASSES_NMS: False
+2024-03-06 12:38:16,689   INFO  cfg.MODEL.POST_PROCESSING.NMS_CONFIG.NMS_TYPE: nms_gpu
+2024-03-06 12:38:16,690   INFO  cfg.MODEL.POST_PROCESSING.NMS_CONFIG.NMS_THRESH: 0.01
+2024-03-06 12:38:16,690   INFO  cfg.MODEL.POST_PROCESSING.NMS_CONFIG.NMS_PRE_MAXSIZE: 4096
+2024-03-06 12:38:16,690   INFO  cfg.MODEL.POST_PROCESSING.NMS_CONFIG.NMS_POST_MAXSIZE: 500
+2024-03-06 12:38:16,690   INFO  
+cfg.OPTIMIZATION = edict()
+2024-03-06 12:38:16,690   INFO  cfg.OPTIMIZATION.BATCH_SIZE_PER_GPU: 2
+2024-03-06 12:38:16,691   INFO  cfg.OPTIMIZATION.NUM_EPOCHS: 100
+2024-03-06 12:38:16,691   INFO  cfg.OPTIMIZATION.OPTIMIZER: adam_onecycle
+2024-03-06 12:38:16,691   INFO  cfg.OPTIMIZATION.LR: 0.003
+2024-03-06 12:38:16,691   INFO  cfg.OPTIMIZATION.WEIGHT_DECAY: 0.01
+2024-03-06 12:38:16,691   INFO  cfg.OPTIMIZATION.MOMENTUM: 0.9
+2024-03-06 12:38:16,692   INFO  cfg.OPTIMIZATION.MOMS: [0.95, 0.85]
+2024-03-06 12:38:16,692   INFO  cfg.OPTIMIZATION.PCT_START: 0.4
+2024-03-06 12:38:16,692   INFO  cfg.OPTIMIZATION.DIV_FACTOR: 10
+2024-03-06 12:38:16,692   INFO  cfg.OPTIMIZATION.DECAY_STEP_LIST: [35, 45]
+2024-03-06 12:38:16,692   INFO  cfg.OPTIMIZATION.LR_DECAY: 0.1
+2024-03-06 12:38:16,693   INFO  cfg.OPTIMIZATION.LR_CLIP: 1e-07
+2024-03-06 12:38:16,693   INFO  cfg.OPTIMIZATION.LR_WARMUP: False
+2024-03-06 12:38:16,693   INFO  cfg.OPTIMIZATION.WARMUP_EPOCH: 1
+2024-03-06 12:38:16,693   INFO  cfg.OPTIMIZATION.GRAD_NORM_CLIP: 10
+2024-03-06 12:38:16,694   INFO  
+cfg.DATA_CONFIG_V4 = edict()
+2024-03-06 12:38:16,694   INFO  cfg.DATA_CONFIG_V4.DATASET: CustomDataset
+2024-03-06 12:38:16,694   INFO  cfg.DATA_CONFIG_V4.DATA_PATH: ../data/data_all
+2024-03-06 12:38:16,694   INFO  cfg.DATA_CONFIG_V4.POINT_CLOUD_RANGE: [-34.56, -39.68, -0.5, 34.56, 39.68, 3.5]
+2024-03-06 12:38:16,694   INFO  
+cfg.DATA_CONFIG_V4.MAP_CLASS_TO_KITTI = edict()
+2024-03-06 12:38:16,695   INFO  cfg.DATA_CONFIG_V4.MAP_CLASS_TO_KITTI.car: Car
+2024-03-06 12:38:16,695   INFO  cfg.DATA_CONFIG_V4.MAP_CLASS_TO_KITTI.truck: Truck
+2024-03-06 12:38:16,695   INFO  cfg.DATA_CONFIG_V4.MAP_CLASS_TO_KITTI.pedestrians: Pedestrian
+2024-03-06 12:38:16,695   INFO  cfg.DATA_CONFIG_V4.MAP_CLASS_TO_KITTI.non_motor_vehicles: Cyclist
+2024-03-06 12:38:16,695   INFO  
+cfg.DATA_CONFIG_V4.DATA_SPLIT = edict()
+2024-03-06 12:38:16,696   INFO  cfg.DATA_CONFIG_V4.DATA_SPLIT.train: train
+2024-03-06 12:38:16,696   INFO  cfg.DATA_CONFIG_V4.DATA_SPLIT.test: val
+2024-03-06 12:38:16,696   INFO  
+cfg.DATA_CONFIG_V4.INFO_PATH = edict()
+2024-03-06 12:38:16,696   INFO  cfg.DATA_CONFIG_V4.INFO_PATH.train: ['custom_infos_train.pkl']
+2024-03-06 12:38:16,696   INFO  cfg.DATA_CONFIG_V4.INFO_PATH.test: ['custom_infos_val.pkl']
+2024-03-06 12:38:16,697   INFO  
+cfg.DATA_CONFIG_V4.POINT_FEATURE_ENCODING = edict()
+2024-03-06 12:38:16,697   INFO  cfg.DATA_CONFIG_V4.POINT_FEATURE_ENCODING.encoding_type: absolute_coordinates_encoding
+2024-03-06 12:38:16,697   INFO  cfg.DATA_CONFIG_V4.POINT_FEATURE_ENCODING.used_feature_list: ['x', 'y', 'z', 'intensity']
+2024-03-06 12:38:16,697   INFO  cfg.DATA_CONFIG_V4.POINT_FEATURE_ENCODING.src_feature_list: ['x', 'y', 'z', 'intensity']
+2024-03-06 12:38:16,698   INFO  
+cfg.DATA_CONFIG_V4.DATA_AUGMENTOR = edict()
+2024-03-06 12:38:16,698   INFO  cfg.DATA_CONFIG_V4.DATA_AUGMENTOR.DISABLE_AUG_LIST: ['placeholder']
+2024-03-06 12:38:16,698   INFO  cfg.DATA_CONFIG_V4.DATA_AUGMENTOR.AUG_CONFIG_LIST: [{'NAME': 'gt_sampling', 'USE_ROAD_PLANE': False, 'DB_INFO_PATH': ['custom_dbinfos_train.pkl'], 'PREPARE': {'filter_by_min_points': ['car:5', 'truck:5', 'pedestrians:5', 'non_motor_vehicles:5']}, 'SAMPLE_GROUPS': ['non_motor_vehicles:3', 'car:3', 'truck:3', 'pedestrain:1'], 'NUM_POINT_FEATURES': 4, 'DATABASE_WITH_FAKELIDAR': False, 'REMOVE_EXTRA_WIDTH': [0.0, 0.0, 0.0], 'LIMIT_WHOLE_SCENE': False}, {'NAME': 'random_world_flip', 'ALONG_AXIS_LIST': ['x']}, {'NAME': 'random_world_rotation', 'WORLD_ROT_ANGLE': [-0.78539816, 0.78539816]}, {'NAME': 'random_world_scaling', 'WORLD_SCALE_RANGE': [0.95, 1.05]}]
+2024-03-06 12:38:16,698   INFO  cfg.DATA_CONFIG_V4.DATA_PROCESSOR: [{'NAME': 'mask_points_and_boxes_outside_range', 'REMOVE_OUTSIDE_BOXES': True}, {'NAME': 'shuffle_points', 'SHUFFLE_ENABLED': {'train': True, 'test': False}}, {'NAME': 'transform_points_to_voxels', 'VOXEL_SIZE': [0.16, 0.16, 4], 'MAX_POINTS_PER_VOXEL': 32, 'MAX_NUMBER_OF_VOXELS': {'train': 16000, 'test': 40000}}]
+2024-03-06 12:38:16,698   INFO  cfg.DATA_CONFIG_V4._BASE_CONFIG_: cfgs/dataset_configs/custom_foton_dataset_v4.yaml
+2024-03-06 12:38:16,699   INFO  
+cfg.FACTORY_137 = edict()
+2024-03-06 12:38:16,699   INFO  cfg.FACTORY_137.DATASET: CustomDataset
+2024-03-06 12:38:16,699   INFO  cfg.FACTORY_137.DATA_PATH: ../data/data137factory
+2024-03-06 12:38:16,699   INFO  cfg.FACTORY_137.POINT_CLOUD_RANGE: [-34.56, -39.68, -0.5, 34.56, 39.68, 3.5]
+2024-03-06 12:38:16,699   INFO  
+cfg.FACTORY_137.MAP_CLASS_TO_KITTI = edict()
+2024-03-06 12:38:16,700   INFO  cfg.FACTORY_137.MAP_CLASS_TO_KITTI.car: Car
+2024-03-06 12:38:16,700   INFO  cfg.FACTORY_137.MAP_CLASS_TO_KITTI.truck: Truck
+2024-03-06 12:38:16,700   INFO  cfg.FACTORY_137.MAP_CLASS_TO_KITTI.pedestrians: Pedestrian
+2024-03-06 12:38:16,700   INFO  cfg.FACTORY_137.MAP_CLASS_TO_KITTI.non_motor_vehicles: Cyclist
+2024-03-06 12:38:16,700   INFO  
+cfg.FACTORY_137.DATA_SPLIT = edict()
+2024-03-06 12:38:16,701   INFO  cfg.FACTORY_137.DATA_SPLIT.train: train
+2024-03-06 12:38:16,701   INFO  cfg.FACTORY_137.DATA_SPLIT.test: val
+2024-03-06 12:38:16,701   INFO  
+cfg.FACTORY_137.INFO_PATH = edict()
+2024-03-06 12:38:16,701   INFO  cfg.FACTORY_137.INFO_PATH.train: ['custom_infos_train.pkl']
+2024-03-06 12:38:16,701   INFO  cfg.FACTORY_137.INFO_PATH.test: ['custom_infos_val.pkl']
+2024-03-06 12:38:16,702   INFO  
+cfg.FACTORY_137.POINT_FEATURE_ENCODING = edict()
+2024-03-06 12:38:16,702   INFO  cfg.FACTORY_137.POINT_FEATURE_ENCODING.encoding_type: absolute_coordinates_encoding
+2024-03-06 12:38:16,702   INFO  cfg.FACTORY_137.POINT_FEATURE_ENCODING.used_feature_list: ['x', 'y', 'z', 'intensity']
+2024-03-06 12:38:16,702   INFO  cfg.FACTORY_137.POINT_FEATURE_ENCODING.src_feature_list: ['x', 'y', 'z', 'intensity']
+2024-03-06 12:38:16,702   INFO  
+cfg.FACTORY_137.DATA_AUGMENTOR = edict()
+2024-03-06 12:38:16,703   INFO  cfg.FACTORY_137.DATA_AUGMENTOR.DISABLE_AUG_LIST: ['placeholder']
+2024-03-06 12:38:16,703   INFO  cfg.FACTORY_137.DATA_AUGMENTOR.AUG_CONFIG_LIST: [{'NAME': 'gt_sampling', 'USE_ROAD_PLANE': False, 'DB_INFO_PATH': ['custom_dbinfos_train.pkl'], 'PREPARE': {'filter_by_min_points': ['car:25', 'truck:40', 'pedestrians:10', 'non_motor_vehicles:15']}, 'SAMPLE_GROUPS': ['car:3', 'truck:3', 'pedestrain:1'], 'NUM_POINT_FEATURES': 4, 'DATABASE_WITH_FAKELIDAR': False, 'REMOVE_EXTRA_WIDTH': [0.0, 0.0, 0.0], 'LIMIT_WHOLE_SCENE': False}, {'NAME': 'random_world_flip', 'ALONG_AXIS_LIST': ['x']}, {'NAME': 'random_world_rotation', 'WORLD_ROT_ANGLE': [-0.78539816, 0.78539816]}, {'NAME': 'random_world_scaling', 'WORLD_SCALE_RANGE': [0.95, 1.05]}]
+2024-03-06 12:38:16,703   INFO  cfg.FACTORY_137.DATA_PROCESSOR: [{'NAME': 'mask_points_and_boxes_outside_range', 'REMOVE_OUTSIDE_BOXES': True}, {'NAME': 'shuffle_points', 'SHUFFLE_ENABLED': {'train': True, 'test': False}}, {'NAME': 'transform_points_to_voxels', 'VOXEL_SIZE': [0.16, 0.16, 4], 'MAX_POINTS_PER_VOXEL': 32, 'MAX_NUMBER_OF_VOXELS': {'train': 16000, 'test': 40000}}]
+2024-03-06 12:38:16,703   INFO  cfg.FACTORY_137._BASE_CONFIG_: cfgs/dataset_configs/factory_137.yaml
+2024-03-06 12:38:16,703   INFO  cfg.TAG: custom_pointpillar
+2024-03-06 12:38:16,704   INFO  cfg.EXP_GROUP_PATH: custom_models
+2024-03-06 12:38:17,669   INFO  Database filter by min points car: 27582 => 27523
+2024-03-06 12:38:17,684   INFO  Database filter by min points truck: 52546 => 51966
+2024-03-06 12:38:17,711   INFO  Database filter by min points pedestrians: 91831 => 91824
+2024-03-06 12:38:17,714   INFO  Database filter by min points non_motor_vehicles: 4431 => 4431
+2024-03-06 12:38:17,724   INFO  Loading Custom dataset.
+2024-03-06 12:38:17,868   INFO  Total samples for CUSTOM dataset: 28065
+2024-03-06 12:38:22,458   INFO  PointPillar(
+  (vfe): PillarVFE(
+    (pfn_layers): ModuleList(
+      (0): PFNLayer(
+        (linear): Linear(in_features=10, out_features=64, bias=False)
+        (norm): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (backbone_3d): None
+  (map_to_bev_module): PointPillarScatter()
+  (pfe): None
+  (backbone_2d): BaseBEVBackbone(
+    (blocks): ModuleList(
+      (0): Sequential(
+        (0): ZeroPad2d((1, 1, 1, 1))
+        (1): Conv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (2): BatchNorm2d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (8): BatchNorm2d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (9): ReLU()
+        (10): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (11): BatchNorm2d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (12): ReLU()
+      )
+      (1): Sequential(
+        (0): ZeroPad2d((1, 1, 1, 1))
+        (1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (2): BatchNorm2d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (8): BatchNorm2d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (9): ReLU()
+        (10): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (11): BatchNorm2d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (12): ReLU()
+        (13): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (14): BatchNorm2d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (15): ReLU()
+        (16): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (17): BatchNorm2d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (18): ReLU()
+      )
+      (2): Sequential(
+        (0): ZeroPad2d((1, 1, 1, 1))
+        (1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (2): BatchNorm2d(256, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(256, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (8): BatchNorm2d(256, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (9): ReLU()
+        (10): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (11): BatchNorm2d(256, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (12): ReLU()
+        (13): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (14): BatchNorm2d(256, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (15): ReLU()
+        (16): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (17): BatchNorm2d(256, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (18): ReLU()
+      )
+    )
+    (deblocks): ModuleList(
+      (0): Sequential(
+        (0): ConvTranspose2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): Sequential(
+        (0): ConvTranspose2d(128, 128, kernel_size=(2, 2), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (2): Sequential(
+        (0): ConvTranspose2d(256, 128, kernel_size=(4, 4), stride=(4, 4), bias=False)
+        (1): BatchNorm2d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+  )
+  (dense_head): AnchorHeadSingle(
+    (cls_loss_func): SigmoidFocalClassificationLoss()
+    (reg_loss_func): WeightedSmoothL1Loss()
+    (dir_loss_func): WeightedCrossEntropyLoss()
+    (conv_cls): Conv2d(384, 32, kernel_size=(1, 1), stride=(1, 1))
+    (conv_box): Conv2d(384, 56, kernel_size=(1, 1), stride=(1, 1))
+    (conv_dir_cls): Conv2d(384, 16, kernel_size=(1, 1), stride=(1, 1))
+  )
+  (point_head): None
+  (roi_head): None
+)
+2024-03-06 12:38:22,461   INFO  **********************Start training custom_models/custom_pointpillar(default)**********************
